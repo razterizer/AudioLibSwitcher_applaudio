@@ -175,4 +175,6 @@ namespace audio
       // You might need to restart the engine if sample rate changes
     }
     
-  }
+  };
+
+}
