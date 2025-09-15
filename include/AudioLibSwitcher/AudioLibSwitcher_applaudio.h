@@ -135,7 +135,7 @@ namespace audio
       
       // Convert mono to stereo if needed (applaudio expects stereo)
       std::vector<short> stereo_buffer;
-      if (engine->get_channel_count() == 2)
+      if (engine->num_channels() == 2)
       {
         stereo_buffer.reserve(buffer.size() * 2);
         for (short sample : buffer)
