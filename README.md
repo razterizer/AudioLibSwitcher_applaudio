@@ -9,3 +9,12 @@ An adapter for the AudioLibSwitcher interface.
 An adapter / interface implementation of the `IAudioLibSwitcher` interface (see [AudioLibSwitcher](https://github.com/razterizer/AudioLibSwitcher) for [applaudio](https://github.com/razterizer/applaudio).
 
 When cloning, don't forget to use the flag `--recurse-submodules`. For example: `git clone AudioLibSwitcher_applaudio --recurse-submodules`
+
+When updating the submodule hash to the latest hash:
+```bash
+# First cd to repo root.
+git submodule update --remote AudioLibSwitcher
+git add AudioLibSwitcher
+git commit -m "Updated the submodule to the latest changeset."
+git push
+```
