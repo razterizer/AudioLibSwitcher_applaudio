@@ -114,12 +114,6 @@ namespace audio
         engine->set_source_looping(src_id, loop);
     }
     
-    virtual void detach_source(unsigned int src_id) override
-    {
-      if (initialized)
-        engine->detach_buffer_from_source(src_id);
-    }
-    
     virtual void set_source_standard_params(unsigned int src_id) override
     {
       if (initialized)
@@ -159,6 +153,12 @@ namespace audio
     {
       if (initialized)
         engine->attach_buffer_to_source(src_id, buf_id);
+    }
+    
+    virtual void detach_buffer_from_source(unsigned int src_id) override
+    {
+      if (initialized)
+        engine->detach_buffer_from_source(src_id);
     }
     
     virtual std::string check_error() override
