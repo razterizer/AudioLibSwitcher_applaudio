@@ -8,6 +8,8 @@
 
 /* Begin PBXFileReference section */
 		0799EFD72E78332900BAE112 /* libAudioLibSwitcher_applaudio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAudioLibSwitcher_applaudio.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0799EFDE2E7833D500BAE112 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0799EFDF2E7833D500BAE112 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +26,8 @@
 		0799EFCE2E78332900BAE112 = {
 			isa = PBXGroup;
 			children = (
+				0799EFDE2E7833D500BAE112 /* LICENSE */,
+				0799EFDF2E7833D500BAE112 /* README.md */,
 				0799EFD82E78332900BAE112 /* Products */,
 			);
 			sourceTree = "<group>";
