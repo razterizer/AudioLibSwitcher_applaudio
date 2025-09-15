@@ -116,12 +116,8 @@ namespace audio
     
     virtual void detach_source(unsigned int src_id) override
     {
-      // For applaudio, detaching means setting buffer_id to 0
       if (initialized)
-      {
-        // You might need to add this method to AudioEngine:
-        // engine->attach_buffer_to_source(src_id, 0);
-      }
+        engine->detach_buffer_from_source(src_id);
     }
     
     virtual void set_source_standard_params(unsigned int src_id) override
