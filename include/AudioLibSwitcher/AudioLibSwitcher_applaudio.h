@@ -27,7 +27,7 @@ namespace audio
       finish();
     }
     
-    void init() override
+    virtual void init() override
     {
       if (initialized)
         return;
@@ -37,7 +37,7 @@ namespace audio
         initialized = true;
     }
     
-    void finish() override
+    virtual void finish() override
     {
       if (engine && initialized)
         engine->shutdown();
@@ -45,76 +45,76 @@ namespace audio
       engine.reset();
     }
     
-    unsigned int create_source() override
+    virtual unsigned int create_source() override
     {
       if (!initialized)
         return 0;
       return engine->create_source();
     }
     
-    void destroy_source(unsigned int src_id) override
+    virtual void destroy_source(unsigned int src_id) override
     {
       if (initialized)
         engine->destroy_source(src_id);
     }
     
-    unsigned int create_buffer() override
+    virtual unsigned int create_buffer() override
     {
       if (!initialized)
         return 0;
       return engine->create_buffer();
     }
     
-    void destroy_buffer(unsigned int buf_id) override
+    virtual void destroy_buffer(unsigned int buf_id) override
     {
       if (initialized)
         engine->destroy_buffer(buf_id);
     }
     
-    void play_source(unsigned int src_id) override
+    virtual void play_source(unsigned int src_id) override
     {
       if (initialized)
         engine->play_source(src_id);
     }
     
-    bool is_source_playing(unsigned int src_id) override
+    virtual bool is_source_playing(unsigned int src_id) override
     {
       if (!initialized)
         return false;
       return engine->is_source_playing(src_id);
     }
     
-    void pause_source(unsigned int src_id) override
+    virtual void pause_source(unsigned int src_id) override
     {
       if (initialized)
         engine->pause_source(src_id);
     }
     
-    void stop_source(unsigned int src_id) override
+    virtual void stop_source(unsigned int src_id) override
     {
       if (initialized)
         engine->stop_source(src_id);
     }
     
-    void set_source_volume(unsigned int src_id, float vol) override
+    virtual void set_source_volume(unsigned int src_id, float vol) override
     {
       if (initialized)
         engine->set_source_volume(src_id, vol);
     }
     
-    void set_source_pitch(unsigned int src_id, float pitch) override
+    virtual void set_source_pitch(unsigned int src_id, float pitch) override
     {
       if (initialized)
         engine->set_source_pitch(src_id, pitch);
     }
     
-    void set_source_looping(unsigned int src_id, bool loop) override
+    virtual void set_source_looping(unsigned int src_id, bool loop) override
     {
       if (initialized)
         engine->set_source_looping(src_id, loop);
     }
     
-    void detach_source(unsigned int src_id) override
+    virtual void detach_source(unsigned int src_id) override
     {
       // For applaudio, detaching means setting buffer_id to 0
       if (initialized)
@@ -124,7 +124,7 @@ namespace audio
       }
     }
     
-    void set_source_standard_params(unsigned int src_id) override
+    virtual void set_source_standard_params(unsigned int src_id) override
     {
       if (initialized)
       {
@@ -135,7 +135,7 @@ namespace audio
       }
     }
     
-    void set_buffer_data_mono_16(unsigned int buf_id, const std::vector<short>& buffer, int sample_rate) override
+    virtual void set_buffer_data_mono_16(unsigned int buf_id, const std::vector<short>& buffer, int sample_rate) override
     {
       if (!initialized)
         return;
@@ -159,13 +159,13 @@ namespace audio
         engine->set_buffer_data(buf_id, buffer);
     }
     
-    void attach_buffer_to_source(unsigned int src_id, unsigned int buf_id) override
+    virtual void attach_buffer_to_source(unsigned int src_id, unsigned int buf_id) override
     {
       if (initialized)
         engine->attach_buffer_to_source(src_id, buf_id);
     }
     
-    std::string check_error() override
+    virtual std::string check_error() override
     {
       // For applaudio, you might want to add error tracking
       // For now, return empty string meaning "no error"
