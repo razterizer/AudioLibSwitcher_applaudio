@@ -131,7 +131,7 @@ namespace audio
       if (!initialized)
         return;
         
-      engine->set_buffer_data(buf_id, stereo_buffer, 1, sample_rate);
+      engine->set_buffer_data(buf_id, buffer, 1, sample_rate);
     }
     
     virtual void attach_buffer_to_source(unsigned int src_id, unsigned int buf_id) override
