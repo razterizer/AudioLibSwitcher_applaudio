@@ -130,24 +130,8 @@ namespace audio
     {
       if (!initialized)
         return;
-      
-      // Store the sample rate for potential resampling
-      this->sample_rate = sample_rate;
-      
-      // Convert mono to stereo if needed (applaudio expects stereo)
-      std::vector<short> stereo_buffer;
-      if (engine->num_channels() == 2)
-      {
-        stereo_buffer.reserve(buffer.size() * 2);
-        for (short sample : buffer)
-        {
-          stereo_buffer.push_back(sample); // Left channel
-          stereo_buffer.push_back(sample); // Right channel
-        }
-        engine->set_buffer_data(buf_id, stereo_buffer);
-      }
-      else
-        engine->set_buffer_data(buf_id, buffer);
+        
+      engine->set_buffer_data(buf_id, stereo_buffer, 1, sample_rate);
     }
     
     virtual void attach_buffer_to_source(unsigned int src_id, unsigned int buf_id) override
