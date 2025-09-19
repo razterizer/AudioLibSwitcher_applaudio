@@ -124,13 +124,30 @@ namespace audio
       }
     }
     
-    virtual void set_buffer_data_mono_16(unsigned int buf_id, const std::vector<short>& buffer, int sample_rate) override
+    virtual bool set_buffer_data_8u(unsigned int buf_id, const std::vector<unsigned char>& buffer, int num_channels, int sample_rate)
     {
       if (!initialized)
         return;
         
-      engine->set_buffer_data_16s(buf_id, buffer, 1, sample_rate);
+      engine->set_buffer_data_8u(buf_id, buffer, num_channels, sample_rate);
     }
+    
+    virtual bool set_buffer_data_16s(unsigned int buf_id, const std::vector<signed short>& buffer, int num_channels, int sample_rate)
+    {
+      if (!initialized)
+        return;
+        
+      engine->set_buffer_data_16s(buf_id, buffer, num_channels, sample_rate);
+    }
+    
+    virtual bool set_buffer_data_32f(unsigned int buf_id, const std::vector<float>& buffer, int num_channels, int sample_rate)
+    {
+      if (!initialized)
+        return;
+        
+      engine->set_buffer_data_32f(buf_id, buffer, num_channels, sample_rate);
+    }
+
     
     virtual void attach_buffer_to_source(unsigned int src_id, unsigned int buf_id) override
     {
