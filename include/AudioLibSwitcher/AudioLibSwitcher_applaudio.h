@@ -124,7 +124,7 @@ namespace audio
       }
     }
     
-    virtual bool set_buffer_data_8u(unsigned int buf_id, const std::vector<unsigned char>& buffer, int num_channels, int sample_rate)
+    virtual bool set_buffer_data_8u(unsigned int buf_id, const std::vector<unsigned char>& buffer, int num_channels, int sample_rate) override
     {
       if (!initialized)
         return false;
@@ -133,7 +133,7 @@ namespace audio
       return true;
     }
     
-    virtual bool set_buffer_data_16s(unsigned int buf_id, const std::vector<signed short>& buffer, int num_channels, int sample_rate)
+    virtual bool set_buffer_data_16s(unsigned int buf_id, const std::vector<signed short>& buffer, int num_channels, int sample_rate) override
     {
       if (!initialized)
         return false;
@@ -142,7 +142,7 @@ namespace audio
       return true;
     }
     
-    virtual bool set_buffer_data_32f(unsigned int buf_id, const std::vector<float>& buffer, int num_channels, int sample_rate)
+    virtual bool set_buffer_data_32f(unsigned int buf_id, const std::vector<float>& buffer, int num_channels, int sample_rate) override
     {
       if (!initialized)
         return false;
