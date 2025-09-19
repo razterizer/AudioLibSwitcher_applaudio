@@ -151,13 +151,6 @@ namespace audio
       return "";
     }
     
-    // Optional: Add method to configure sample rate
-    void set_sample_rate(int rate)
-    {
-      sample_rate = rate;
-      // You might need to restart the engine if sample rate changes
-    }
-    
   };
 
 }
