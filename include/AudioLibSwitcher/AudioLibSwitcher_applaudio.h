@@ -127,25 +127,28 @@ namespace audio
     virtual bool set_buffer_data_8u(unsigned int buf_id, const std::vector<unsigned char>& buffer, int num_channels, int sample_rate)
     {
       if (!initialized)
-        return;
+        return false;
         
       engine->set_buffer_data_8u(buf_id, buffer, num_channels, sample_rate);
+      return true;
     }
     
     virtual bool set_buffer_data_16s(unsigned int buf_id, const std::vector<signed short>& buffer, int num_channels, int sample_rate)
     {
       if (!initialized)
-        return;
+        return false;
         
       engine->set_buffer_data_16s(buf_id, buffer, num_channels, sample_rate);
+      return true;
     }
     
     virtual bool set_buffer_data_32f(unsigned int buf_id, const std::vector<float>& buffer, int num_channels, int sample_rate)
     {
       if (!initialized)
-        return;
+        return false;
         
       engine->set_buffer_data_32f(buf_id, buffer, num_channels, sample_rate);
+      return true;
     }
 
     
