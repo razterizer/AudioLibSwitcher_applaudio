@@ -18,8 +18,6 @@ namespace audio
   private:
     std::unique_ptr<applaudio::AudioEngine> engine;
     bool initialized = false;
-    int sample_rate = 44100; // Default sample rate
-    int channels = 2;
     
   public:
     AudioLibSwitcher_applaudio() = default;
@@ -34,7 +32,7 @@ namespace audio
         return;
       
       engine = std::make_unique<applaudio::AudioEngine>();
-      if (engine->startup(sample_rate, channels, false))
+      if (engine->startup())
         initialized = true;
     }
     
