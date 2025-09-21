@@ -26,12 +26,12 @@ namespace audio
       finish();
     }
     
-    virtual void init() override
+    virtual void init(bool enable_audio = true) override
     {
       if (initialized)
         return;
       
-      engine = std::make_unique<applaudio::AudioEngine>();
+      engine = std::make_unique<applaudio::AudioEngine>(enable_audio);
       if (engine->startup())
         initialized = true;
     }
