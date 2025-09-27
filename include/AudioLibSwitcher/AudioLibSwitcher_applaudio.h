@@ -89,6 +89,12 @@ namespace audio
         engine->pause_source(src_id);
     }
     
+    virtual void resume_source(unsigned int src_id) override
+    {
+      if (initialized)
+        engine->resume_source(src_id);
+    }
+    
     virtual void stop_source(unsigned int src_id) override
     {
       if (initialized)
