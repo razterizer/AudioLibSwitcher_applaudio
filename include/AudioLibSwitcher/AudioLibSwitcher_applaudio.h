@@ -202,6 +202,7 @@ namespace audio
     {
       if (initialized)
         return engine->set_speed_of_sound(src_id, speed_of_sound);
+      return false;
     }
     
     virtual std::optional<float> get_speed_of_sound(unsigned int src_id) override
