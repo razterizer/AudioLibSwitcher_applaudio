@@ -176,6 +176,7 @@ namespace audio
         engine->enable_source_3d_audio(src_id, enable);
     }
 
+    // std::array<float, 16> is a row-major 4x4 matrix.
     virtual bool set_source_3d_state(
         unsigned int src_id,
         const std::array<float, 16>& transform_local_to_world,
@@ -187,6 +188,7 @@ namespace audio
       return false;
     }
 
+    // std::array<float, 16> is a row-major 4x4 matrix.
     virtual bool set_listener_3d_state(
         const std::array<float, 16>& transform_local_to_world,
         const std::array<float, 3>& posL_local, const std::array<float, 3>& velL_world,
