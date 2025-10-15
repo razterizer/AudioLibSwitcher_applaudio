@@ -164,10 +164,10 @@ namespace audio
         engine->detach_buffer_from_source(src_id);
     }
     
-    virtual void init_3d_scene(float speed_of_sound) override
+    virtual void init_3d_scene() override
     {
       if (initialized)
-        engine->init_3d_scene(speed_of_sound);
+        engine->init_3d_scene();
     }
 
     virtual void enable_source_3d_audio(unsigned int src_id, bool enable) override
@@ -197,39 +197,52 @@ namespace audio
         return engine->set_listener_3d_state_channel(channel, rot_mtx, pos_world, vel_world);
       return false;
     }
+    
+    virtual bool set_speed_of_sound(unsigned int src_id, float speed_of_sound) override
+    {
+      if (initialized)
+        return engine->set_speed_of_sound(src_id, speed_of_sound);
+    }
+    
+    virtual std::optional<float> get_speed_of_sound(unsigned int src_id) override
+    {
+      if (initialized)
+        return engine->get_speed_of_sound(src);
+      return std::nullopt;
+    }
 
-    virtual bool set_attenuation_min_distance(float min_dist) override
+    virtual bool set_attenuation_min_distance(unsigned int src_id, float min_dist) override
     {
       if (initialized)
-        return engine->set_attenuation_min_distance(min_dist);
+        return engine->set_attenuation_min_distance(src_id, min_dist);
       return false;
     }
     
-    virtual bool set_attenuation_max_distance(float max_dist) override
+    virtual bool set_attenuation_max_distance(unsigned int src_id, float max_dist) override
     {
       if (initialized)
-        return engine->set_attenuation_max_distance(max_dist);
+        return engine->set_attenuation_max_distance(src_id, max_dist);
       return false;
     }
     
-    virtual bool set_attenuation_constant_falloff(float const_falloff) override
+    virtual bool set_attenuation_constant_falloff(unsigned int src_id, float const_falloff) override
     {
       if (initialized)
-        return engine->set_attenuation_constant_falloff(const_falloff);
+        return engine->set_attenuation_constant_falloff(src_id, const_falloff);
       return false;
     }
     
-    virtual bool set_attenuation_linear_falloff(float lin_falloff) override
+    virtual bool set_attenuation_linear_falloff(unsigned int src_id, float lin_falloff) override
     {
       if (initialized)
-        return engine->set_attenuation_linear_falloff(lin_falloff);
+        return engine->set_attenuation_linear_falloff(src_id, lin_falloff);
       return false;
     }
     
-    virtual bool set_attenuation_quadratic_falloff(float sq_falloff) override
+    virtual bool set_attenuation_quadratic_falloff(unsigned int src_id, float sq_falloff) override
     {
       if (initialized)
-        return engine->set_attenuation_quadratic_falloff(sq_falloff);
+        return engine->set_attenuation_quadratic_falloff(src_id, sq_falloff);
       return false;
     }
     
