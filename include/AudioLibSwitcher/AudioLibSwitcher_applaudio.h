@@ -164,6 +164,74 @@ namespace audio
         engine->detach_buffer_from_source(src_id);
     }
     
+    virtual void init_3d_scene(float speed_of_sound) override
+    {
+      if (initialized)
+        engine->init_3d_scene(speed_of_sound);
+    }
+
+    virtual void enable_source_3d_audio(unsigned int src_id, bool enable) override
+    {
+      if (initialized)
+        engine->enable_source_3d_audio(src_id, enable);
+    }
+
+    virtual bool set_source_3d_state(
+        unsigned int src_id,
+        const std::array<float, 16>& transform_local_to_world,
+        const std::array<float, 3>& posL_local, const std::array<float, 3>& velL_world,
+        const std::array<float, 3>& posR_local = { 0.f, 0.f, 0.f }, const std::array<float, 3>& velR_world = { 0.f, 0.f, 0.f }) override
+    {
+      if (initialized)
+        return engine->set_source_pos_vel(src_id, transform_local_to_world, posL_local, velL_world, posR_local, velR_world);
+      return false;
+    }
+
+    virtual bool set_listener_3d_state(
+        const std::array<float, 16>& transform_local_to_world,
+        const std::array<float, 3>& posL_local, const std::array<float, 3>& velL_world,
+        const std::array<float, 3>& posR_local = { 0.f, 0.f, 0.f }, const std::array<float, 3>& velR_world = { 0.f, 0.f, 0.f }) override
+    {
+      if (initialized)
+        return engine->set_listener_pos_vel(transform_local_to_world, posL_local, velL_world, posR_local, velR_world);
+      return false;
+    }
+
+    virtual bool set_attenuation_min_distance(float min_dist) override
+    {
+      if (initialized)
+        return engine->set_attenuation_min_distance(min_dist);
+      return false;
+    }
+    
+    virtual bool set_attenuation_max_distance(float max_dist) override
+    {
+      if (initialized)
+        return engine->set_attenuation_max_distance(max_dist);
+      return false;
+    }
+    
+    virtual bool set_attenuation_constant_falloff(float const_falloff) override
+    {
+      if (initialized)
+        return engine->set_attenuation_constant_falloff(const_falloff);
+      return false;
+    }
+    
+    virtual bool set_attenuation_linear_falloff(float lin_falloff) override
+    {
+      if (initialized)
+        return engine->set_attenuation_linear_falloff(lin_falloff);
+      return false;
+    }
+    
+    virtual bool set_attenuation_quadratic_falloff(float sq_falloff) override
+    {
+      if (initialized)
+        return engine->set_attenuation_quadratic_falloff(sq_falloff);
+      return false;
+    }
+    
     virtual std::string check_error() override
     {
       // For applaudio, you might want to add error tracking
