@@ -183,7 +183,7 @@ namespace audio
         const std::array<float, 3>& pos_world, const std::array<float, 3>& vel_world) override
     {
       if (initialized)
-        return engine->set_source_channel_3d_state(src_id, channel, rot_mtx, pos_world, vel_world);
+        return engine->set_source_3d_state_channel(src_id, channel, rot_mtx, pos_world, vel_world);
       return false;
     }
 
@@ -194,7 +194,7 @@ namespace audio
         const std::array<float, 3>& pos_world, const std::array<float, 3>& vel_world) override
     {
       if (initialized)
-        return engine->set_listener_channel_3d_state(channel, rot_mtx, pos_world, vel_world);
+        return engine->set_listener_3d_state_channel(channel, rot_mtx, pos_world, vel_world);
       return false;
     }
 
