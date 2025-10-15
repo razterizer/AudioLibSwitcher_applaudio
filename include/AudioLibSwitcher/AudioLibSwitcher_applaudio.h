@@ -176,26 +176,25 @@ namespace audio
         engine->enable_source_3d_audio(src_id, enable);
     }
 
-    // std::array<float, 16> is a row-major 4x4 matrix.
-    virtual bool set_source_3d_state(
-        unsigned int src_id,
-        const std::array<float, 16>& transform_local_to_world,
-        const std::array<float, 3>& posL_local, const std::array<float, 3>& velL_world,
-        const std::array<float, 3>& posR_local = { 0.f, 0.f, 0.f }, const std::array<float, 3>& velR_world = { 0.f, 0.f, 0.f }) override
+    // std::array<float, 9> is a row-major 3x3 matrix.
+    virtual bool set_source_channel_3d_state(
+        unsigned int src_id, int channel,
+        const std::array<float, 9>& rot_mtx,
+        const std::array<float, 3>& pos_world, const std::array<float, 3>& vel_world) override
     {
       if (initialized)
-        return engine->set_source_pos_vel(src_id, transform_local_to_world, posL_local, velL_world, posR_local, velR_world);
+        return engine->set_source_channel_3d_state(src_id, channel, rot_mtx, pos_world, vel_world);
       return false;
     }
 
-    // std::array<float, 16> is a row-major 4x4 matrix.
-    virtual bool set_listener_3d_state(
-        const std::array<float, 16>& transform_local_to_world,
-        const std::array<float, 3>& posL_local, const std::array<float, 3>& velL_world,
-        const std::array<float, 3>& posR_local = { 0.f, 0.f, 0.f }, const std::array<float, 3>& velR_world = { 0.f, 0.f, 0.f }) override
+    // std::array<float, 9> is a row-major 3x3 matrix.
+    virtual bool set_listener_channel_3d_state(
+        int channel,
+        const std::array<float, 9>& rot_mtx,
+        const std::array<float, 3>& pos_world, const std::array<float, 3>& vel_world) override
     {
       if (initialized)
-        return engine->set_listener_pos_vel(transform_local_to_world, posL_local, velL_world, posR_local, velR_world);
+        return engine->set_listener_channel_3d_state(channel, rot_mtx, pos_world, vel_world);
       return false;
     }
 
