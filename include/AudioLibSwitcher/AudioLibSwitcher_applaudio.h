@@ -164,6 +164,12 @@ namespace audio
         engine->detach_buffer_from_source(src_id);
     }
     
+    virtual void set_source_panning(unsigned int src_id, std::optional<float> pan = std::nullopt) override
+    {
+      if (initialized)
+        engine->set_source_panning(src_id, pan);
+    }
+    
     virtual void init_3d_scene() override
     {
       if (initialized)
