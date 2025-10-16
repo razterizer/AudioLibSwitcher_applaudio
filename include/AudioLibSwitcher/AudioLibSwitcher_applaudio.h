@@ -201,49 +201,49 @@ namespace audio
     virtual bool set_speed_of_sound(unsigned int src_id, float speed_of_sound) override
     {
       if (initialized)
-        return engine->set_speed_of_sound(src_id, speed_of_sound);
+        return engine->set_source_speed_of_sound(src_id, speed_of_sound);
       return false;
     }
     
     virtual std::optional<float> get_speed_of_sound(unsigned int src_id) override
     {
       if (initialized)
-        return engine->get_speed_of_sound(src_id);
+        return engine->get_source_speed_of_sound(src_id);
       return std::nullopt;
     }
 
     virtual bool set_attenuation_min_distance(unsigned int src_id, float min_dist) override
     {
       if (initialized)
-        return engine->set_attenuation_min_distance(src_id, min_dist);
+        return engine->set_source_attenuation_min_distance(src_id, min_dist);
       return false;
     }
     
     virtual bool set_attenuation_max_distance(unsigned int src_id, float max_dist) override
     {
       if (initialized)
-        return engine->set_attenuation_max_distance(src_id, max_dist);
+        return engine->set_source_attenuation_max_distance(src_id, max_dist);
       return false;
     }
     
     virtual bool set_attenuation_constant_falloff(unsigned int src_id, float const_falloff) override
     {
       if (initialized)
-        return engine->set_attenuation_constant_falloff(src_id, const_falloff);
+        return engine->set_source_attenuation_constant_falloff(src_id, const_falloff);
       return false;
     }
     
     virtual bool set_attenuation_linear_falloff(unsigned int src_id, float lin_falloff) override
     {
       if (initialized)
-        return engine->set_attenuation_linear_falloff(src_id, lin_falloff);
+        return engine->set_source_attenuation_linear_falloff(src_id, lin_falloff);
       return false;
     }
     
     virtual bool set_attenuation_quadratic_falloff(unsigned int src_id, float sq_falloff) override
     {
       if (initialized)
-        return engine->set_attenuation_quadratic_falloff(src_id, sq_falloff);
+        return engine->set_source_attenuation_quadratic_falloff(src_id, sq_falloff);
       return false;
     }
     
