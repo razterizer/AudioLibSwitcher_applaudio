@@ -299,6 +299,7 @@ namespace audio
     {
       if (initialized)
         return engine->set_listener_rear_attenuation(rear_attenuation);
+      return false;
     }
     
     virtual std::string check_error() override
