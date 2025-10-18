@@ -253,6 +253,54 @@ namespace audio
       return false;
     }
     
+    // directivity_alpha = 0 : Omni.
+    // directivity_alpha = 1 : Fully Directional.
+    // [0, 1].
+    virtual bool set_source_directivity_alpha(unsigned int src_id, float directivity_alpha) override
+    {
+      if (initialized)
+        return engine->set_source_directivity_alpha(src_id, directivity_alpha);
+      return false;
+    }
+    
+    // [1, 8]. 8 = sharpest.
+    virtual bool set_source_directivity_sharpness(unsigned int src_id, float directivity_sharpness) override
+    {
+      if (initialized)
+        return engine->set_source_directivity_sharpness(src_id, directivity_sharpness);
+      return false;
+    }
+    
+    // 0 = Cardioid, 1 = SuperCardioid, 2 = HalfRectifiedDipole, 3 = Dipole.
+    virtual bool set_source_directivity_type(unsigned int src_id, int directivity_type) override
+    {
+      if (initialized)
+      {
+        if (directivity_type < 0)
+          return false;
+        if (directivity_type > 3)
+          return false;
+        auto type = static_cast<applaudio::DirectivityType>(directivity_type);
+        return engine->set_source_directivity_type(src_id, type);
+      }
+      return false;
+    }
+    
+    // [0.f, 1.f]. 0 = Silence, 1 = No Attenuation.
+    virtual bool set_source_rear_attenuation(unsigned int src_id, float rear_attenuation) override
+    {
+      if (initialized)
+        return engine->set_source_rear_attenuation(src_id, rear_attenuation);
+      return false;
+    }
+    
+    // [0.f, 1.f]. 0 = Silence, 1 = No Attenuation.
+    virtual bool set_listener_rear_attenuation(float rear_attenuation) override
+    {
+      if (initialized)
+        return engine->set_listener_rear_attenuation(rear_attenuation);
+    }
+    
     virtual std::string check_error() override
     {
       // For applaudio, you might want to add error tracking
