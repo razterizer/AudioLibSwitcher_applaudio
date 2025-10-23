@@ -76,7 +76,7 @@ namespace audio
         engine->play_source(src_id);
     }
     
-    virtual bool is_source_playing(unsigned int src_id) override
+    virtual std::optional<bool> is_source_playing(unsigned int src_id) override
     {
       if (!initialized)
         return false;
