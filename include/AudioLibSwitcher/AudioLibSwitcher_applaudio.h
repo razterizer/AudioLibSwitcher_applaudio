@@ -231,9 +231,16 @@ namespace audio
         std::array<float, 9>& rot_mtx,
         std::array<float, 3>& pos_world, std::array<float, 3>& vel_world) const override
     {
-      if (initialized)
-        return engine->get_source_3d_state_channel(src_id, channel, rot_mtx, pos_world, vel_world);
-      return false;
+      if (!initialized)
+        return false;
+      la::Mtx3 la_rot_mtx;
+      la::Vec3 la_pos_world;
+      la::Vec3 la_vel_world;
+      engine->get_source_3d_state_channel(src_id, channel, la_rot_mtx, la_pos_world, la_vel_world);
+      rot_mtx = la_rot_mtx.to_arr();
+      pos_world = la_pos_world.to_arr();
+      vel_world = la_vel_world.to_arr();
+      return true;
     }
 
     // std::array<float, 9> is a row-major 3x3 matrix.
@@ -250,9 +257,16 @@ namespace audio
         std::array<float, 9>& rot_mtx,
         std::array<float, 3>& pos_world, std::array<float, 3>& vel_world) const override
     {
-      if (initialized)
-        return engine->get_listener_3d_state_channel(channel, rot_mtx, pos_world, vel_world);
-      return false;
+      if (!initialized)
+        return false;
+      la::Mtx3 la_rot_mtx;
+      la::Vec3 la_pos_world;
+      la::Vec3 la_vel_world;
+      engine->get_listener_3d_state_channel(channel, la_rot_mtx, la_pos_world, la_vel_world);
+      rot_mtx = la_rot_mtx.to_arr();
+      pos_world = la_pos_world.to_arr();
+      vel_world = la_vel_world.to_arr();
+      return true;
     }
     
     virtual bool set_source_speed_of_sound(unsigned int src_id, float speed_of_sound) override
@@ -388,8 +402,11 @@ namespace audio
     
     virtual std::optional<int> get_source_directivity_type(unsigned int src_id) const override
     {
-      if (initialized)
-        return engine->get_source_directivity_type(src_id);
+      if (!initialized)
+        return std::nullopt;
+      auto dir_type = engine->get_source_directivity_type(src_id);
+      if (dir_type.has_value())
+        return static_cast<int>(dir_type.value());
       return std::nullopt;
     }
     
@@ -419,7 +436,7 @@ namespace audio
     virtual std::optional<float> get_listener_rear_attenuation() const override
     {
       if (initialized)
-        return engine->get_listener_rear_attenuation(src_id);
+        return engine->get_listener_rear_attenuation();
       return std::nullopt;
     }
     
