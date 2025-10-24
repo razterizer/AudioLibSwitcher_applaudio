@@ -79,7 +79,7 @@ namespace audio
     virtual std::optional<bool> is_source_playing(unsigned int src_id) override
     {
       if (!initialized)
-        return false;
+        return std::nullopt;
       return engine->is_source_playing(src_id);
     }
     
@@ -87,6 +87,13 @@ namespace audio
     {
       if (initialized)
         engine->pause_source(src_id);
+    }
+    
+    virtual std::optional<bool> is_source_paused(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->is_source_paused(src_id);
+      return std::nullopt;
     }
     
     virtual void stop_source(unsigned int src_id) override
@@ -101,16 +108,37 @@ namespace audio
         engine->set_source_volume(src_id, vol);
     }
     
+    virtual std::optional<float> get_source_volume(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_volume(src_id);
+      return std::nullopt;
+    }
+    
     virtual void set_source_pitch(unsigned int src_id, float pitch) override
     {
       if (initialized)
         engine->set_source_pitch(src_id, pitch);
     }
     
+    virtual std::optional<float> get_source_pitch(unsigned int src_id) const
+    {
+      if (initialized)
+        return engine->get_source_pitch(src_id);
+      return std::nullopt;
+    }
+    
     virtual void set_source_looping(unsigned int src_id, bool loop) override
     {
       if (initialized)
         engine->set_source_looping(src_id, loop);
+    }
+    
+    virtual std::optional<bool> get_source_looping(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_looping(src_id);
+      return std::nullopt;
     }
     
     virtual void set_source_standard_params(unsigned int src_id) override
@@ -170,6 +198,13 @@ namespace audio
         engine->set_source_panning(src_id, pan);
     }
     
+    virtual std::optional<float> get_source_panning(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_panning(src_id);
+      return std::nullopt;
+    }
+    
     virtual void init_3d_scene() override
     {
       if (initialized)
@@ -192,6 +227,15 @@ namespace audio
         return engine->set_source_3d_state_channel(src_id, channel, rot_mtx, pos_world, vel_world);
       return false;
     }
+    
+    virtual bool get_source_3d_state_channel(unsigned int src_id, int channel,
+        std::array<float, 9>& rot_mtx,
+        std::array<float, 3>& pos_world, std::array<float, 3>& vel_world) const override
+    {
+      if (initialized)
+        return engine->get_source_3d_state_channel(src_id, channel, rot_mtx, pos_world, vel_world);
+      return false;
+    }
 
     // std::array<float, 9> is a row-major 3x3 matrix.
     virtual bool set_listener_3d_state_channel(
@@ -201,6 +245,15 @@ namespace audio
     {
       if (initialized)
         return engine->set_listener_3d_state_channel(channel, rot_mtx, pos_world, vel_world);
+      return false;
+    }
+    
+    virtual bool get_listener_3d_state_channel(int channel,
+        std::array<float, 9>& rot_mtx,
+        std::array<float, 3>& pos_world, std::array<float, 3>& vel_world) const override
+    {
+      if (initialized)
+        return engine->get_listener_3d_state_channel(channel, rot_mtx, pos_world, vel_world);
       return false;
     }
     
@@ -225,11 +278,25 @@ namespace audio
       return false;
     }
     
+    virtual std::optional<float> get_source_attenuation_min_distance(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_attenuation_min_distance(src_id);
+      return std::nullopt;
+    }
+    
     virtual bool set_source_attenuation_max_distance(unsigned int src_id, float max_dist) override
     {
       if (initialized)
         return engine->set_source_attenuation_max_distance(src_id, max_dist);
       return false;
+    }
+    
+    virtual std::optional<float> get_source_attenuation_max_distance(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_attenuation_max_distance(src_id);
+      return std::nullopt;
     }
     
     virtual bool set_source_attenuation_constant_falloff(unsigned int src_id, float const_falloff) override
@@ -239,6 +306,13 @@ namespace audio
       return false;
     }
     
+    virtual std::optional<float> get_source_attenuation_constant_falloff(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_attenuation_constant_falloff(src_id);
+      return std::nullopt;
+    }
+    
     virtual bool set_source_attenuation_linear_falloff(unsigned int src_id, float lin_falloff) override
     {
       if (initialized)
@@ -246,11 +320,25 @@ namespace audio
       return false;
     }
     
+    virtual std::optional<float> get_source_attenuation_linear_falloff(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_attenuation_linear_falloff(src_id);
+      return std::nullopt;
+    }
+    
     virtual bool set_source_attenuation_quadratic_falloff(unsigned int src_id, float sq_falloff) override
     {
       if (initialized)
         return engine->set_source_attenuation_quadratic_falloff(src_id, sq_falloff);
       return false;
+    }
+    
+    virtual std::optional<float> get_source_attenuation_quadratic_falloff(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_attenuation_quadratic_falloff(src_id);
+      return std::nullopt;
     }
     
     // directivity_alpha = 0 : Omni.
@@ -263,12 +351,26 @@ namespace audio
       return false;
     }
     
+    virtual std::optional<float> get_source_directivity_alpha(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_directivity_alpha(src_id);
+      return std::nullopt;
+    }
+    
     // [1, 8]. 8 = sharpest.
     virtual bool set_source_directivity_sharpness(unsigned int src_id, float directivity_sharpness) override
     {
       if (initialized)
         return engine->set_source_directivity_sharpness(src_id, directivity_sharpness);
       return false;
+    }
+    
+    virtual std::optional<float> get_source_directivity_sharpness(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_directivity_sharpness(src_id);
+      return std::nullopt;
     }
     
     // 0 = Cardioid, 1 = SuperCardioid, 2 = HalfRectifiedDipole, 3 = Dipole.
@@ -286,6 +388,13 @@ namespace audio
       return false;
     }
     
+    virtual std::optional<int> get_source_directivity_type(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_directivity_type(src_id);
+      return std::nullopt;
+    }
+    
     // [0.f, 1.f]. 0 = Silence, 1 = No Attenuation.
     virtual bool set_source_rear_attenuation(unsigned int src_id, float rear_attenuation) override
     {
@@ -294,12 +403,26 @@ namespace audio
       return false;
     }
     
+    virtual std::optional<float> get_source_rear_attenuation(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_rear_attenuation(src_id);
+      return std::nullopt;
+    }
+    
     // [0.f, 1.f]. 0 = Silence, 1 = No Attenuation.
     virtual bool set_listener_rear_attenuation(float rear_attenuation) override
     {
       if (initialized)
         return engine->set_listener_rear_attenuation(rear_attenuation);
       return false;
+    }
+    
+    virtual std::optional<float> get_listener_rear_attenuation(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_listener_rear_attenuation(src_id);
+      return std::nullopt;
     }
     
     virtual std::string check_error() override
