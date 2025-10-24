@@ -418,7 +418,7 @@ namespace audio
       return false;
     }
     
-    virtual std::optional<float> get_listener_rear_attenuation(unsigned int src_id) const override
+    virtual std::optional<float> get_listener_rear_attenuation() const override
     {
       if (initialized)
         return engine->get_listener_rear_attenuation(src_id);
