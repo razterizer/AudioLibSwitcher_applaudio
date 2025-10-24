@@ -121,7 +121,7 @@ namespace audio
         engine->set_source_pitch(src_id, pitch);
     }
     
-    virtual std::optional<float> get_source_pitch(unsigned int src_id) const
+    virtual std::optional<float> get_source_pitch(unsigned int src_id) const override
     {
       if (initialized)
         return engine->get_source_pitch(src_id);
