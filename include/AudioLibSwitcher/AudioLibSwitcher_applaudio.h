@@ -440,6 +440,44 @@ namespace audio
       return std::nullopt;
     }
     
+    // 0 = RH_XRight_YUp_ZBackward, 1 = RH_XLeft_YUp_ZForward, 2 = RH_XRight_YDown_ZForward, 3 = RH_XLeft_YDown_ZBackward, 4 = RH_XRight_YForward_ZUp.
+    virtual bool set_source_coordsys_convention(unsigned int src_id, int cs_conv) override
+    {
+      if (initialized)
+        return engine->set_source_coordsys_convention(src_id, static_cast<applaudio::a3d::CoordSysConvention>(cs_conv));
+      return false;
+    }
+    
+    // 0 = RH_XRight_YUp_ZBackward, 1 = RH_XLeft_YUp_ZForward, 2 = RH_XRight_YDown_ZForward, 3 = RH_XLeft_YDown_ZBackward, 4 = RH_XRight_YForward_ZUp.
+    virtual std::optional<int> get_source_coordsys_convention(unsigned int src_id) const override
+    {
+      if (!initialized)
+        return std::nullopt;
+      auto cs_conv = engine->get_source_coordsys_convention(src_id);
+      if (cs_conv.has_value())
+        return static_cast<int>(cs_conv.value());
+      return std::nullopt;
+    }
+    
+    // 0 = RH_XRight_YUp_ZBackward, 1 = RH_XLeft_YUp_ZForward, 2 = RH_XRight_YDown_ZForward, 3 = RH_XLeft_YDown_ZBackward, 4 = RH_XRight_YForward_ZUp.
+    virtual bool set_listener_coordsys_convention(int cs_conv) override
+    {
+      if (initialized)
+        return engine->set_listener_coordsys_convention(static_cast<applaudio::a3d::CoordSysConvention>(cs_conv));
+      return false;
+    }
+    
+    // 0 = RH_XRight_YUp_ZBackward, 1 = RH_XLeft_YUp_ZForward, 2 = RH_XRight_YDown_ZForward, 3 = RH_XLeft_YDown_ZBackward, 4 = RH_XRight_YForward_ZUp.
+    virtual std::optional<int> get_listener_coordsys_convention() const override
+    {
+      if (!initialized)
+        return std::nullopt;
+      auto cs_conv = engine->get_listener_coordsys_convention();
+      if (cs_conv.has_value())
+        return static_cast<int>(cs_conv.value());
+      return std::nullopt;
+    }
+    
     virtual std::string check_error() override
     {
       // For applaudio, you might want to add error tracking
