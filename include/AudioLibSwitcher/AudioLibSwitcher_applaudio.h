@@ -102,16 +102,16 @@ namespace audio
         engine->stop_source(src_id);
     }
     
-    virtual void set_source_volume(unsigned int src_id, float vol) override
+    virtual void set_source_gain(unsigned int src_id, float gain) override
     {
       if (initialized)
-        engine->set_source_volume(src_id, vol);
+        engine->set_source_gain(src_id, vol);
     }
     
-    virtual std::optional<float> get_source_volume(unsigned int src_id) const override
+    virtual std::optional<float> get_source_gain(unsigned int src_id) const override
     {
       if (initialized)
-        return engine->get_source_volume(src_id);
+        return engine->get_source_gain(src_id);
       return std::nullopt;
     }
     
