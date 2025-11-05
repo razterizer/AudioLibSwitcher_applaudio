@@ -136,7 +136,7 @@ namespace audio
     }
     
     // Perceptually linear mapping: 0 -> -60 dB, 1 -> 0 dB.
-    virtual std::optional<float> get_source_volume_slider(unsigned int src_id) const
+    virtual std::optional<float> get_source_volume_slider(unsigned int src_id) const override
     {
       if (initialized)
         return engine->get_source_volume_slider(src_id);
