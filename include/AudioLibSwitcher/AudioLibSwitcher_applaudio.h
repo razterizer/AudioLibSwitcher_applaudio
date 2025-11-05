@@ -105,7 +105,7 @@ namespace audio
     virtual void set_source_gain(unsigned int src_id, float gain) override
     {
       if (initialized)
-        engine->set_source_gain(src_id, vol);
+        engine->set_source_gain(src_id, gain);
     }
     
     virtual std::optional<float> get_source_gain(unsigned int src_id) const override
@@ -147,7 +147,7 @@ namespace audio
       {
         // Set standard parameters using your existing interface
         set_source_pitch(src_id, 1.0f);
-        set_source_volume(src_id, 1.0f);
+        set_source_gain(src_id, 1.0f);
         set_source_looping(src_id, false);
       }
     }
