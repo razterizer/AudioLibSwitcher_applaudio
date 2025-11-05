@@ -115,6 +115,34 @@ namespace audio
       return std::nullopt;
     }
     
+    virtual void set_source_volume_dB(unsigned int src_id, float vol_dB) override
+    {
+      if (initialized)
+        engine->set_source_volume_dB(src_id, vol_dB);
+    }
+    
+    virtual std::optional<float> get_source_volume_dB(unsigned int src_id) const override
+    {
+      if (initialized)
+        return engine->get_source_volume_dB(src_id);
+      return std::nullopt;
+    }
+    
+    // Perceptually linear mapping: 0 -> -60 dB, 1 -> 0 dB.
+    virtual void set_source_volume_slider(unsigned int src_id, float vol01) override
+    {
+      if (initialized)
+        engine->set_source_volume_slider(src_id, vol_dB);
+    }
+    
+    // Perceptually linear mapping: 0 -> -60 dB, 1 -> 0 dB.
+    virtual std::optional<float> get_source_volume_slider(unsigned int src_id) const
+    {
+      if (initialized)
+        return engine->get_source_volume_slider(src_id);
+      return std::nullopt;
+    }
+    
     virtual void set_source_pitch(unsigned int src_id, float pitch) override
     {
       if (initialized)
