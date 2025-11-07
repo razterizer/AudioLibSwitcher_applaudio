@@ -128,18 +128,22 @@ namespace audio
       return std::nullopt;
     }
     
-    // Perceptually linear mapping: 0 -> -60 dB, 1 -> 0 dB.
-    virtual void set_source_volume_slider(unsigned int src_id, float vol01) override
+    // Perceptually linear mapping: 0 -> min_dB dB, 1 -> 0 dB.
+    virtual void set_source_volume_slider(unsigned int src_id, float vol01,
+                                          float min_dB = -60.f,
+                                          std::optional<float> nl_taper = std::nullopt) override
     {
       if (initialized)
-        engine->set_source_volume_slider(src_id, vol01);
+        engine->set_source_volume_slider(src_id, vol01, min_dB, nl_taper);
     }
     
-    // Perceptually linear mapping: 0 -> -60 dB, 1 -> 0 dB.
-    virtual std::optional<float> get_source_volume_slider(unsigned int src_id) const override
+    // Perceptually linear mapping: 0 -> min_dB dB, 1 -> 0 dB.
+    virtual std::optional<float> get_source_volume_slider(unsigned int src_id,
+                                                          float min_dB = -60.f,
+                                                          std::optional<float> nl_taper = std::nullopt) const override
     {
       if (initialized)
-        return engine->get_source_volume_slider(src_id);
+        return engine->get_source_volume_slider(src_id, min_dB, nl_taper);
       return std::nullopt;
     }
     
