@@ -12,6 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		073221AF2FCD06C200DF0AE9 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		0799EFD72E78332900BAE112 /* libAudioLibSwitcher_applaudio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAudioLibSwitcher_applaudio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0799EFDE2E7833D500BAE112 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0799EFDF2E7833D500BAE112 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -37,6 +38,7 @@
 				0799EFDF2E7833D500BAE112 /* README.md */,
 				0799EFE42E7836A700BAE112 /* AudioLibSwitcher_applaudio.h */,
 				0799EFE12E7835E800BAE112 /* AudioLibSwitcher */,
+				073221AF2FCD06C200DF0AE9 /* CMakeLists.txt */,
 				0799EFD82E78332900BAE112 /* Products */,
 			);
 			sourceTree = "<group>";
