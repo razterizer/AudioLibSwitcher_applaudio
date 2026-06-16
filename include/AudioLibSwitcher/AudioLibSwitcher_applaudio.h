@@ -6,7 +6,7 @@
 //
 
 #pragma once
-#include "../../AudioLibSwitcher/include/AudioLibSwitcher/IAudioLibSwitcher.h"
+#include <AudioLibSwitcher/IAudioLibSwitcher.h>
 #include <applaudio/AudioEngine.h>
 #include <memory>
 
