@@ -12,7 +12,7 @@ public_headers = ["include/AudioLibSwitcher/AudioLibSwitcher_applaudio.h"]
 include_dirs = ["AudioLibSwitcher/include", "include"]
 
 [build]
-number = 1
+number = 2
 
 [release]
 build_number_format = "dotted"
@@ -23,7 +23,7 @@ applaudio = { path = "../applaudio" }
 
 [profile.workflow-release.dependencies]
 AudioLibSwitcher = { github = "razterizer/AudioLibSwitcher", version = "1.0.0+build.1" }
-applaudio = { github = "razterizer/applaudio", version = "1.0.0+build.1" }
+applaudio = { github = "razterizer/applaudio", version = "1.0.0+build.2" }
 
 [profile.workflow-release.build]
 configuration = "Release"
