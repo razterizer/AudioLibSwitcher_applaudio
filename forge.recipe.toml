@@ -9,7 +9,7 @@ cpp_std = 20
 [sources]
 paths = []
 public_headers = ["include/AudioLibSwitcher/AudioLibSwitcher_applaudio.h"]
-include_dirs = ["AudioLibSwitcher/include", "include"]
+include_dirs = ["include"]
 
 [build]
 number = 2
