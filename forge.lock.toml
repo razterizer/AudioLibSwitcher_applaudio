@@ -22,10 +22,10 @@ sha256 = "d88e4949375d2a39fd9aa09f695d2e223c0bd3435f0d0d176c40d6e01536dc47"
 name = "applaudio"
 github = "razterizer/applaudio"
 package = "applaudio"
-version = "1.0.0+build.3"
+version = "1.0.1+build.4"
 target = "macos-arm64"
-url = "https://github.com/razterizer/applaudio/releases/download/release-1.0.0.3/applaudio-1.0.0+build.3-macos-arm64.cbox"
-sha256 = "5acbba43c91cf2af9d85e8a3c06122743e2138c40e7d6d0a5fde249be949afbd"
+url = "https://github.com/razterizer/applaudio/releases/download/release-1.0.1.4/applaudio-1.0.1+build.4-macos-arm64.cbox"
+sha256 = "d511797dc95294deb97d7ed7f5bf17b7a11d71ad8c074a1aba4e3601f53ece31"
 
 [[dependency]]
 name = "applaudio"
