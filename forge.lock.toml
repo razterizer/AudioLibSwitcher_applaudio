@@ -16,7 +16,7 @@ package = "applaudio"
 version = "1.0.1+build.4"
 target = "linux-x86_64"
 url = "https://github.com/razterizer/applaudio/releases/download/release-1.0.1.4/applaudio-1.0.1+build.4-linux-x86_64.cbox"
-sha256 = "e66fb5e6a579791dd2a318c7253b1ebba7379c0c8403fbc5ca536f678ad04fd0"
+sha256 = "6deee8b61f6600259dbd11de8641dda59577b9ea295604117f60cabacdb3896f"
 
 [[dependency]]
 name = "applaudio"
@@ -25,7 +25,7 @@ package = "applaudio"
 version = "1.0.1+build.4"
 target = "macos-arm64"
 url = "https://github.com/razterizer/applaudio/releases/download/release-1.0.1.4/applaudio-1.0.1+build.4-macos-arm64.cbox"
-sha256 = "d511797dc95294deb97d7ed7f5bf17b7a11d71ad8c074a1aba4e3601f53ece31"
+sha256 = "bb2b0298b6e6ae1609bd2b1ac20b40d7efa9758f511d6d43b1899cd83acf8ca4"
 
 [[dependency]]
 name = "applaudio"
@@ -34,4 +34,4 @@ package = "applaudio"
 version = "1.0.1+build.4"
 target = "windows-x86_64"
 url = "https://github.com/razterizer/applaudio/releases/download/release-1.0.1.4/applaudio-1.0.1+build.4-windows-x86_64.cbox"
-sha256 = "edf2e3b7e804341c3652b0436ea4564af25d0432d736c1dccbab16803cde9d7b"
+sha256 = "430e9b819ff5689cfce801c9d1daa129eb2173d598a8dd351c01b93f69d2b725"
