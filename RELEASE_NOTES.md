@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.0.1.4
+
+- Bumped applaudio with windows dependency to ksguid.
+
 ## 1.0.0.3
 
 - Depend on applaudio 1.0.0 build 3 for the corrected Linux ALSA link metadata.

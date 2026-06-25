@@ -2,7 +2,7 @@
 
 [project]
 name = "AudioLibSwitcher_applaudio"
-version = "1.0.0"
+version = "1.0.1"
 type = "header_only"
 cpp_std = 20
 
@@ -12,7 +12,7 @@ public_headers = ["include/AudioLibSwitcher/AudioLibSwitcher_applaudio.h"]
 include_dirs = ["include"]
 
 [build]
-number = 3
+number = 4
 
 [release]
 build_number_format = "dotted"
