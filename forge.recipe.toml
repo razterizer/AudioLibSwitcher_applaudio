@@ -23,7 +23,7 @@ applaudio = { path = "../applaudio" }
 
 [profile.workflow-release.dependencies]
 AudioLibSwitcher = { github = "razterizer/AudioLibSwitcher", version = "1.0.0+build.1" }
-applaudio = { github = "razterizer/applaudio", version = "1.0.0+build.3" }
+applaudio = { github = "razterizer/applaudio", version = "1.0.1+build.4" }
 
 [profile.workflow-release.build]
 configuration = "Release"
